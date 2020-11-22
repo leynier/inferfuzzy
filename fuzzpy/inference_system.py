@@ -13,7 +13,10 @@ class InferenceSystem:
         self.rules = rules if rules else []
         self.defuzz_func = defuzz_func
 
-    def infer(
+    def add_rule(self, rule: BaseRule):
+        self.rules.append(rule)
+
+    def infer_with_custom_defuzz(
         self,
         values: dict,
         defuzz_func: Optional[Callable[[BaseSet], Any]] = None,
@@ -25,10 +28,22 @@ class InferenceSystem:
         func = self.defuzz_func if defuzz_func is None else defuzz_func
         set: Dict[str, BaseSet] = self.rules[0](values)
         for rule in self.rules[1:]:
-            update: Dict[str, BaseSet] = rule(values)
-            for key in update:
-                set[key] = set[key] & update[key]
+            temp: Dict[str, BaseSet] = rule(values)
+            for key in temp:
+                set[key] += temp[key]
         result: Dict[str, Any] = {}
         for key in set:
             result[key] = func(set[key])
         return result
+
+    def infer_with_dict(
+        self,
+        values: dict,
+    ) -> Dict[str, Any]:
+        return self.infer_with_custom_defuzz(values)
+
+    def infer(
+        self,
+        **values: dict,
+    ) -> Dict[str, Any]:
+        return self.infer_with_custom_defuzz(values)

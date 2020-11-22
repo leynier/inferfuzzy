@@ -11,4 +11,4 @@ class MamdaniRule(Rule):
             lambda x: min(value, set.membership(x)),
             set.membership.items,
         )
-        return BaseSet(f"cuted_{set.name}", membership, set.union, set.inter)
+        return BaseSet(f"cuted_{set.name}", membership, set.aggregation)

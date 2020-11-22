@@ -1,4 +1,4 @@
-from typing import Any, Callable, List
+from typing import Any, Callable, List, Optional
 
 from .base_set import BaseSet
 from .base_var import BaseVar
@@ -13,8 +13,12 @@ class VarFactory:
         self.union = union
         self.inter = inter
 
-    def __call__(self, name: str, sets: List[BaseSet]) -> BaseVar:
-        return BaseVar(name, sets, self.union, self.inter)
+    def __call__(
+        self,
+        name: str,
+        sets: Optional[List[BaseSet]] = None,
+    ) -> BaseVar:
+        return BaseVar(name, self.union, self.inter, sets)
 
     @staticmethod
     def create(

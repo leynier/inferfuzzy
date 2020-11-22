@@ -7,22 +7,19 @@ from .membership import Membership
 class SetFactory:
     def __init__(
         self,
-        union: Callable[[Any, Any], Any],
-        inter: Callable[[Any, Any], Any],
+        aggregation: Callable[[Any, Any], Any],
     ):
-        self.union = union
-        self.inter = inter
+        self.aggregation = aggregation
 
     def __call__(
         self,
         name: str,
         membership: Membership,
     ) -> BaseSet:
-        return BaseSet(name, membership, self.union, self.inter)
+        return BaseSet(name, membership, self.aggregation)
 
     @staticmethod
     def create(
-        union: Callable[[Any, Any], Any],
-        inter: Callable[[Any, Any], Any],
+        aggregation: Callable[[Any, Any], Any],
     ) -> "SetFactory":
-        return SetFactory(union, inter)
+        return SetFactory(aggregation)

@@ -11,4 +11,4 @@ class LarsenRule(Rule):
             lambda x: set.membership(x) * value,
             set.membership.items,
         )
-        return BaseSet(f"scaled_{set.name}", membership, set.union, set.inter)
+        return BaseSet(f"scaled_{set.name}", membership, set.aggregation)

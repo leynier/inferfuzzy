@@ -1,7 +1,9 @@
-from typing import Any, Callable, List, Union
+from typing import Any, Callable, List, Optional, Tuple, Union, cast
 
 from .base_set import BaseSet
+from .membership import Membership
 from .predicates import Predicate
+from .set import Set
 
 
 class VarSet(Predicate):
@@ -27,12 +29,12 @@ class BaseVar:
     def __init__(
         self,
         name: str,
-        sets: List[BaseSet],
         union: Callable[[Any, Any], Any],
         inter: Callable[[Any, Any], Any],
+        sets: Optional[List[BaseSet]] = None,
     ):
         self.name = name
-        self.sets = {set.name: set for set in sets}
+        self.sets = {set.name: set for set in sets} if sets else {}
         self.union = union
         self.inter = inter
 
@@ -42,3 +44,32 @@ class BaseVar:
             raise KeyError(f"Set {set_name} not found into var {self.name}")
         temp_set = self.sets[set_name]
         return VarSet(self, temp_set, self.union, self.inter)
+
+    def __add__(
+        self,
+        arg: Union[
+            Tuple[str, Membership],
+            BaseSet,
+            Tuple[BaseSet, ...],
+        ],
+    ):
+        temp: List[BaseSet] = []
+        if (
+            isinstance(arg, tuple)
+            and len(arg) == 2
+            and isinstance(arg[0], str)
+            and isinstance(arg[1], Membership)
+        ):
+            name = cast(str, arg[0])
+            membership = cast(Membership, arg[1])
+            temp.append(Set(name=name, membership=membership))
+        elif isinstance(arg, BaseSet):
+            temp.append(arg)
+        elif isinstance(arg, tuple) and all(
+            map(lambda x: isinstance(x, BaseSet), arg),
+        ):
+            temp += arg
+        else:
+            raise ValueError("Incorrect format of set")
+        self.sets.update({set.name: set for set in temp})
+        return self
