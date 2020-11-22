@@ -5,8 +5,13 @@ description = "Fuzzy Inference System in Python"
 authors = ["leynier <leynier41@gmail.com>"]
 readme = "README.md"
 
+[tool.poetry.scripts]
+fuzzpy = "fuzzpy.main:app"
+
 [tool.poetry.dependencies]
 python = "^3.8"
+typer = "^0.3.2"
+numpy = "^1.19.4"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
