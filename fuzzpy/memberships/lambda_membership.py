@@ -1,7 +1,7 @@
 from ..membership import Membership
 
 
-class TriangularMembership(Membership):
+class LambdaMembership(Membership):
     def __init__(self, a, m, b):
         def func(x):
             if x <= a:
@@ -12,4 +12,4 @@ class TriangularMembership(Membership):
                 return (b - x) / (b - m)
             return 0
 
-        super(TriangularMembership, self).__init__(func, [a, m, b])
+        super(LambdaMembership, self).__init__(func, [a, m, b])
