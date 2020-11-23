@@ -6,17 +6,17 @@
 > **Tutor:** Dr. Yudivian Almeida, *Universidad de La Habana*
 > **Código:** <https://github.com/leynier/fuzzpy>
 
-**FuzzPy** es un biblioteca de **Python** para implementar **Sistemas de Inferencia Difusa**.
+**FuzzPy** es una biblioteca de **Python** para implementar **Sistemas de Inferencia Difusa**.
 
-## Caracterı́sticas del Sistema de Inferencia
+## Características del Sistema de Inferencia
 
 La biblioteca contiene implementados los métodos de inferencia *Mamdani* y *Larsen*. Pero es posible implementar partiendo de una base común otros métodos de inferencia.
 
 Los métodos de inferencia reciben una función de *defuzzificación*. La biblioteca contiene implementadas *Centroide*, *Bisectriz*, *Máximo Central*, *Máximo más pequeño* y *Máximo más grande*.
 
-Durante el proceso de definición de los conjuntos difusos esto requiren una función de membresía que puede ser implementada o utilizar una de las disponibles en la biblioteca.
+Durante el proceso de definición de los conjuntos difusos esto requieren una función de membresía que puede ser implementada o utilizar una de las disponibles en la biblioteca.
 
-Funciones de membresia implementadas en **FuzzPy**:
+Funciones de membresía implementadas en **FuzzPy**:
 
 * Función Gamma
 * Función Lambda o Triangular
@@ -25,13 +25,13 @@ Funciones de membresia implementadas en **FuzzPy**:
 * Función Z
 * Función Gaussiana
 
-La *T-conorm* y *T-norm* utilizadas en las reglas de inferencia, asi como el método de agregación de los conjuntos son posibles de sobreescribir, por defecto, son *mínimo*, *máximo* y *máximo* respectivamente.
+La *T-conorm* y *T-norm* utilizadas en las reglas de inferencia, así como el método de agregación de los conjuntos son posibles de sobrescribir, por defecto, son *mínimo*, *máximo* y *máximo* respectivamente.
 
 Es posible definir más de una variable de salida para el sistema de inferencia difusa implementado en la biblioteca.
 
 ## Estructura de la Implementación
 
-La implementación se sostiene sobre 7 clases fundamentales. Estas son:
+La implementación se sostiene sobre 7 clases fundamentales:
 
 * `Membership`
 * `BaseSet`
@@ -43,7 +43,7 @@ La implementación se sostiene sobre 7 clases fundamentales. Estas son:
 
 ### Membership
 
-Es la clase encargada de representar una función de membresia junto a los puntos (llamados `items` internamente)
+Es la clase encargada de representar una función de membresía junto a los puntos (llamados `items` internamente)
 
 ```python
 class Membership:
@@ -88,7 +88,7 @@ class BaseSet:
 
 ### BaseVar
 
-Es la clase encargada de representar una variable linguistica. Recibe como parámetros una función de unión, una función de intercepción y una lista de objetos de tipo `BaseSet` representando los conjuntos difusos de la variable.
+Es la clase encargada de representar una variable lingüística. Recibe como parámetros una función de unión, una función de intercepción y una lista de objetos de tipo `BaseSet` representando los conjuntos difusos de la variable.
 
 ```python
 class BaseVar:
@@ -114,7 +114,7 @@ class BaseVar:
 
 ### BaseRule
 
-Es la clase encargada de representar una regla de inferencia. Recibe como parámetro un objeto de tipo `Predicate` representando el antecendente de la regla.
+Es la clase encargada de representar una regla de inferencia. Recibe como parámetro un objeto de tipo `Predicate` representando el antecedente de la regla.
 
 ```python
 class BaseRule:
@@ -149,7 +149,7 @@ class Rule(BaseRule):
 
 ### Predicate
 
-Es la clase encargada de representar a los antecedentes. De ella heredan cuatro clases: `AndPredicate`, `OrPredicate`, `NotPredicate` y `VarSet`. Las primeras tres para representar las relaciones lógicas de unión, intercepción y negación; y la última representa la inclusión de una variable en un determinado conjunto, siendo esta la cláse básica para representar a los antecedentes.
+Es la clase encargada de representar a los antecedentes. De ella heredan cuatro clases: `AndPredicate`, `OrPredicate`, `NotPredicate` y `VarSet`. Las primeras tres para representar las relaciones lógicas de unión, intercepción y negación; y la última representa la inclusión de una variable en un determinado conjunto, siendo esta la clase básica para representar a los antecedentes.
 
 ```python
 class Predicate:
@@ -195,7 +195,7 @@ class VarSet(Predicate):
 
 ### InferenceSystem
 
-Es la clase encargarda de representar el sistema de inferencia. Recibe como parámetros las reglas y una función de defuzzificación y con el método `infer` permite realizar la inferencia según los valores probehidos.
+Es la clase encargada de representar el sistema de inferencia. Recibe como parámetros las reglas y una función de defuzzificación y con el método `infer` permite realizar la inferencia según los valores proveídos.
 
 ```python
 class InferenceSystem:
@@ -236,26 +236,26 @@ Se desea inferir el por ciento de la cantidad de un determinado producto que se 
 
 Por ejemplo, el producto *Pollo*, se desea conocer bajo determinadas condiciones que por ciento del *Pollo* sacado del almacén dispuesto para venderse ese día se termina vendiendo.
 
-Para la implementación se seleccionaron `4` variables linguisticas. Las primeras `3` de entrada y la última de salida.
+Para la implementación se seleccionaron `4` variables lingüísticas. Las primeras `3` de entrada y la última de salida.
 
-1. Cantidad de platos o derivados del producto que se vende. Por ejemplo, retomando el ejemplo del *Pollo*, si se vendería *Pollo Fitro* y *Pollo Asado*, la variable valdría `2`. A esta variable le llamaremos `variety`.
+1. Cantidad de platos o derivados del producto que se vende. Por ejemplo, retomando el ejemplo del *Pollo*, si se vendería *Pollo Frito* y *Pollo Asado*, la variable valdría `2`. A esta variable le llamaremos `variety`.
     * Baja: `low <= 2`. Función de Membresía: Z
     * Normal: `1 <= normal <= 5`. Función de Membresía: Gaussiana
     * Alta: `high >= 4`. Función de Membresía: S
-2. Por ciento que representa la variable `variety` del total de platos o derivados de productos que se vende. Por ejemplo, si se vende *Pollo Fitro*, *Pollo Asado*, *Pezcado* y *Cerdo* la variable valdría `50`. A esta variable se le llamará `diversity`.
+2. Por ciento que representa la variable `variety` del total de platos o derivados de productos que se vende. Por ejemplo, si se vende *Pollo Frito*, *Pollo Asado*, *Pescado* y *Cerdo* la variable valdría `50`. A esta variable se le llamará `diversity`.
     * Baja: `low >= 70`. Función de Membresía: Gamma
     * Normal: `40 <= normal <= 80`. Función de Membresía: Lambda
     * Alta: `high <= 50`. Función de Membresía: L
-3. Por ciento de la utilización del local, si es `100` es que el local siempre esta lleno, si es `0` es que no asiste ningún cliente al establecimiento. A esta variable se le llamará `clients`.
+3. Por ciento de la utilización del local, si es `100` es que el local siempre está lleno, si es `0` es que no asiste ningún cliente al establecimiento. A esta variable se le llamará `clients`.
     * Baja: `low <= 40`. Función de Membresía: L
     * Normal: `30 <= normal <= 90`. Función de Membresía: Lambda
     * Alta: `high >= 80`. Función de Membresía: Gamma
-4. Por ciento de la cantidad del producto que se vendió en el día, si es `100` fue se vendío todo al final del día, si es `50` fue que no se vendió la mitad de la cantidad. A esta variable se le llamará `sales`.
+4. Por ciento de la cantidad del producto que se vendió en el día, si es `100` fue se vendió todo al final del día, si es `50` fue que no se vendió la mitad de la cantidad. A esta variable se le llamará `sales`.
     * Baja: `low <= 60`. Función de Membresía: L
     * Normal: `30 <= normal <= 90`. Función de Membresía: Lambda
     * Alta: `high >= 90`. Función de Membresía: Gamma
 
-### Declaración de las variables linguísticas y sus conjuntos difusos en FuzzPy
+### Declaración de las variables lingüísticas y sus conjuntos difusos en FuzzPy
 
 ```python
 variety_var = Var("variety")
@@ -490,11 +490,11 @@ Larsen 60.00%
 
 #### Análisis de los Resultados
 
-De los resultado, se puede observar que los métodos de Mamdani y Larsen obtienen resultado similares. A primera vista no es posible validar si los resultados se acemejan a la realidad, para esto es imprecindible la colaboración de un experto en el tema para la correcta definición de las variables, la asignación de las funciones de membresı́a más correctas ası́ como la definición de las reglas asociadas.
+De los resultados, se puede observar que los métodos de Mamdani y Larsen obtienen resultados similares. A primera vista no es posible validar si los resultados se asemejan a la realidad, para esto es imprescindible la colaboración de un experto en el tema para la correcta definición de las variables, la asignación de las funciones de membresía más correctas así́ como la definición de las reglas asociadas.
 
 ## Conclusiones
 
-En este escrito se muestra las lineas generales de como utilizar FuzzPy, además de que muestra la capacidad de los sistemas de inferencia difusos para afrontar problemáticas donde la definición utilizando la lógica clásica no este clara o que la solución utilizando esta sea demasiado engorroza.
+En este escrito se muestra las líneas generales de cómo utilizar FuzzPy, además de que muestra la capacidad de los sistemas de inferencia difusos para afrontar problemáticas donde la definición utilizando la lógica clásica no esté clara o que la solución utilizando esta sea demasiado engorrosa.
 
 ## Referencias
 
