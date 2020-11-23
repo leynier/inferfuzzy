@@ -1,5 +1,7 @@
 from typing import Any, Callable, List, Optional, Tuple, Union, cast
 
+import matplotlib.pyplot as plt
+
 from .base_set import BaseSet
 from .membership import Membership
 from .predicates import Predicate
@@ -73,6 +75,17 @@ class BaseVar:
             raise ValueError("Incorrect format of set")
         self.sets.update({set.name: set for set in temp})
         return self
+
+    def graph(self, step: float = 0.05):
+        plots = []
+        plt.figure()
+        for it, desc in enumerate(self.sets.values()):
+            x_data = desc.domain(step=step)
+            y_data = [desc.membership(x) for x in x_data]
+            plots.append(plt.plot(x_data, y_data, f"C{it+1}", label=desc.name))
+        plt.legend()
+        plt.title(self.name)
+        plt.savefig(f"var_{self.name}.png")
 
     def __str__(self) -> str:
         return self.name

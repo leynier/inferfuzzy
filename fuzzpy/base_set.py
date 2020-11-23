@@ -1,5 +1,6 @@
 from typing import Any, Callable
 
+import matplotlib.pyplot as plt
 from numpy import arange
 
 from .membership import Membership
@@ -46,3 +47,13 @@ class BaseSet:
 
     def __str__(self) -> str:
         return self.name
+
+    def graph(self, step: float = 0.05):
+        x_data = self.domain(step=step)
+        y_data = [self.membership(x) for x in x_data]
+        plt.figure()
+        plt.title(self.name)
+        plt.xlabel("Domain values")
+        plt.ylabel("Membership grade")
+        plt.plot(x_data, y_data)
+        plt.savefig(f"set_{self.name}.png")

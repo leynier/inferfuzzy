@@ -37,6 +37,11 @@ def run():
     sales_percent_var += "normal", LambdaMembership(30, 60, 90)
     sales_percent_var += "high", GammaMembership(90, 100)
 
+    variety_var.graph()
+    diversity_percent_var.graph()
+    clients_percent_var.graph()
+    sales_percent_var.graph()
+
     mamdani = MamdaniSystem(defuzz_func=centroid_defuzzification)
     mamdani += (
         variety_var.into("low")
