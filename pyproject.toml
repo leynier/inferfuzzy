@@ -12,6 +12,7 @@ fuzzpy = "fuzzpy.main:app"
 python = "^3.8"
 typer = "^0.3.2"
 numpy = "^1.19.4"
+matplotlib = "^3.3.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
