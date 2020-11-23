@@ -47,3 +47,8 @@ class InferenceSystem:
         **values: dict,
     ) -> Dict[str, Any]:
         return self.infer_with_custom_defuzz(values)
+
+    def __str__(self) -> str:
+        result = f"Defuzzification function:\n   {self.defuzz_func.__name__}\n"
+        result += "Rules:\n" + "\n".join([f"   {rule}" for rule in self.rules])
+        return result

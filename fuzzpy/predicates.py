@@ -44,7 +44,7 @@ class AndPredicate(BinaryPredicate):
         )
 
     def __str__(self):
-        return f"({self.left}) and ({self.right})"
+        return f"({self.left} and {self.right})"
 
 
 class OrPredicate(BinaryPredicate):
@@ -55,7 +55,7 @@ class OrPredicate(BinaryPredicate):
         )
 
     def __str__(self):
-        return f"({self.left}) or ({self.right})"
+        return f"({self.left} or {self.right})"
 
 
 class NotPredicate(Predicate):
@@ -72,4 +72,4 @@ class NotPredicate(Predicate):
         return 1 - self.arg(values)
 
     def __str__(self):
-        return f"not ({self.arg})"
+        return f"(not {self.arg})"

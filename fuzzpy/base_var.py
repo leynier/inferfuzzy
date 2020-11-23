@@ -22,7 +22,7 @@ class VarSet(Predicate):
         return self.set.membership(values[self.var.name])
 
     def __str__(self):
-        return f"{self.var} in ({self.set})"
+        return f"({self.var} in {self.set})"
 
 
 class BaseVar:
@@ -73,3 +73,6 @@ class BaseVar:
             raise ValueError("Incorrect format of set")
         self.sets.update({set.name: set for set in temp})
         return self
+
+    def __str__(self) -> str:
+        return self.name

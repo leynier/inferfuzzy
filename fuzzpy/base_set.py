@@ -43,3 +43,6 @@ class BaseSet:
 
     def __len__(self):
         return len(self.domain())
+
+    def __str__(self) -> str:
+        return self.name
