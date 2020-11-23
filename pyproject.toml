@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Fuzzy Inference System in Python"
 authors = ["leynier <leynier41@gmail.com>"]
 readme = "README.md"
+license = "MIT"
 
 [tool.poetry.scripts]
 fuzzpy = "fuzzpy.main:app"
