@@ -311,9 +311,9 @@ def run():
         & clients_percent_var.into("high")
     ), sales_percent_var.into("normal")
 
-    variety_val = typer.prompt("Input variety value", type=float)
-    diversity_val = typer.prompt("Input diversity value", type=float)
-    clients_val = typer.prompt("Input clients value", type=float)
+    variety_val = typer.prompt("Input variety value", type=int)
+    diversity_val = typer.prompt("Input diversity percent", type=float)
+    clients_val = typer.prompt("Input clients percent", type=float)
 
     mamdani_result: float = mamdani.infer(
         variety=variety_val,
