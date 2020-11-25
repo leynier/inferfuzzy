@@ -1,6 +1,6 @@
-from inferfuzzy.base_set import BaseSet
 from typing import Any, Callable, Dict, List, Optional
 
+from .base_set import BaseSet
 from .rule import BaseRule
 
 
