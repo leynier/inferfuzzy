@@ -1,12 +1,12 @@
-# FuzzPy
+# Inferfuzzy
 
 > **Autor:** [Leynier Gutiérrez González](https://leynier.github.io)
 > **Grupo:** C412
 > **Correo**: [l.gutierrez@estudiantes.matcom.uh.cu](mailto:l.gutierrez@estudiantes.matcom.uh.cu)
 > **Tutor:** Dr. Yudivian Almeida, *Universidad de La Habana*
-> **Código:** <https://github.com/leynier/fuzzpy>
+> **Código:** <https://github.com/leynier/inferfuzzy>
 
-**FuzzPy** es una biblioteca de **Python** para implementar **Sistemas de Inferencia Difusa**.
+**Inferfuzzy** es una biblioteca de **Python** para implementar **Sistemas de Inferencia Difusa**.
 
 ## Características del Sistema de Inferencia
 
@@ -16,7 +16,7 @@ Los métodos de inferencia reciben una función de *defuzzificación*. La biblio
 
 Durante el proceso de definición de los conjuntos difusos esto requieren una función de membresía que puede ser implementada o utilizar una de las disponibles en la biblioteca.
 
-Funciones de membresía implementadas en **FuzzPy**:
+Funciones de membresía implementadas en **Inferfuzzy**:
 
 * Función Gamma
 * Función Lambda o Triangular
@@ -228,7 +228,7 @@ class InferenceSystem:
         return result
 ```
 
-## Ejemplo de como utilizar FuzzPy
+## Ejemplo de como utilizar Inferfuzzy
 
 Como ejemplo se utilizará el siguiente problema.
 
@@ -255,7 +255,7 @@ Para la implementación se seleccionaron `4` variables lingüísticas. Las prime
     * Normal: `30 <= normal <= 90`. Función de Membresía: Lambda
     * Alta: `high >= 90`. Función de Membresía: Gamma
 
-### Declaración de las variables lingüísticas y sus conjuntos difusos en FuzzPy
+### Declaración de las variables lingüísticas y sus conjuntos difusos en Inferfuzzy
 
 ```python
 variety_var = Var("variety")
@@ -321,7 +321,7 @@ sales_percent_var += "high", GammaMembership(90, 100)
 |   high  |    high   |  normal |   low  |
 |   high  |    high   |   high  | normal |
 
-### Declaración de las Reglas de Inferencia en FuzzPy
+### Declaración de las Reglas de Inferencia en Inferfuzzy
 
 ```python
 mamdani = MamdaniSystem(
@@ -494,7 +494,7 @@ De los resultados, se puede observar que los métodos de Mamdani y Larsen obtien
 
 ## Conclusiones
 
-En este escrito se muestra las líneas generales de cómo utilizar FuzzPy, además de que muestra la capacidad de los sistemas de inferencia difusos para afrontar problemáticas donde la definición utilizando la lógica clásica no esté clara o que la solución utilizando esta sea demasiado engorrosa.
+En este escrito se muestra las líneas generales de cómo utilizar Inferfuzzy, además de que muestra la capacidad de los sistemas de inferencia difusos para afrontar problemáticas donde la definición utilizando la lógica clásica no esté clara o que la solución utilizando esta sea demasiado engorrosa.
 
 ## Referencias
 

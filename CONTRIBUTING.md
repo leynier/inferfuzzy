@@ -1,4 +1,4 @@
-# FuzzPy
+# Inferfuzzy
 
 ## Contributions are highly appreciated
 

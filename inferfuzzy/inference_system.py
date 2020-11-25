@@ -1,4 +1,4 @@
-from fuzzpy.base_set import BaseSet
+from inferfuzzy.base_set import BaseSet
 from typing import Any, Callable, Dict, List, Optional
 
 from .rule import BaseRule
