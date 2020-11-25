@@ -1,11 +1,9 @@
 name: CI
-
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-
 jobs:
   ci:
     runs-on: ubuntu-latest
@@ -20,14 +18,12 @@ jobs:
       with:
         poetry-version: 1.1.2
     - name: Install dependencies
-      run: |
-        poetry install
+      run: poetry install
     - name: Lint with flake8
+      run: flake8 . --count --show-source --statistics --max-line-length=88 --extend-ignore=E203
+    - name: Format with black and isort
       run: |
-        # stop the build if there are Python syntax errors or undefined names
-        poetry run flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        poetry run flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+        poetry run black . --check
+        poetry run isort . --profile=black
     - name: Test with pytest
-      run: |
-        poetry run pytest
+      run: poetry run pytest
