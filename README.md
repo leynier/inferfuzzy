@@ -1,5 +1,16 @@
 # Inferfuzzy
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![Test](https://github.com/leynier/inferfuzzy/workflows/CI/badge.svg)](https://github.com/leynier/inferfuzzy/actions?query=workflow%3ACI)
+[![Version](https://img.shields.io/pypi/v/inferfuzzy?color=%2334D058&label=Version)](https://pypi.org/project/inferfuzzy)
+[![Last commit](https://img.shields.io/github/last-commit/leynier/inferfuzzy.svg?style=flat)](https://github.com/leynier/inferfuzzy/commits)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/leynier/inferfuzzy)](https://github.com/leynier/inferfuzzy/commits)
+[![Github Stars](https://img.shields.io/github/stars/leynier/inferfuzzy?style=flat&logo=github)](https://github.com/leynier/inferfuzzy/stargazers)
+[![Github Forks](https://img.shields.io/github/forks/leynier/inferfuzzy?style=flat&logo=github)](https://github.com/leynier/inferfuzzy/network/members)
+[![Github Watchers](https://img.shields.io/github/watchers/leynier/inferfuzzy?style=flat&logo=github)](https://github.com/leynier/inferfuzzy)
+[![Website](https://img.shields.io/website?up_message=online&url=https%3A%2F%2Fleynier.github.io/inferfuzzy)](https://leynier.github.io/inferfuzzy)
+[![GitHub contributors](https://img.shields.io/github/contributors/leynier/inferfuzzy)](https://github.com/leynier/inferfuzzy/graphs/contributors)
+
 **Inferfuzzy** is a **Python** library to implement **Fuzzy Inference Systems**.
 
 ## Getting started
