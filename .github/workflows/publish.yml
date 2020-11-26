@@ -1,0 +1,29 @@
+name: Publish
+on:
+  push:
+    tags: v*.*.*
+jobs:
+  Publish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Python Poetry Action
+      uses: abatilo/actions-poetry@v2.1.0
+      with:
+        poetry-version: 1.1.2
+    - name: Install dependencies
+      run: poetry install
+    - name: Lint with flake8
+      run: poetry run flake8 . --count --show-source --statistics --max-line-length=88 --extend-ignore=E203
+    - name: Format with black and isort
+      run: |
+        poetry run black . --check
+        poetry run isort . --profile=black
+    - name: Test with pytest
+      run: poetry run pytest
+    - name: Publish
+      run: poetry run poetry publish -u ${{ secrets.PyPIUsername }} -p ${{ secrets.PyPIPassword }} --build
