@@ -3,9 +3,9 @@ name = "inferfuzzy"
 version = "0.1.0"
 description = "Fuzzy Inference System in Python"
 authors = ["leynier <leynier41@gmail.com>"]
-homepage = https://github.com/leynier/inferfuzzy
-repository = https://github.com/leynier/inferfuzzy
-documentation = https://github.com/leynier/inferfuzzy
+homepage = "https://github.com/leynier/inferfuzzy"
+repository = "https://github.com/leynier/inferfuzzy"
+documentation = "https://github.com/leynier/inferfuzzy"
 readme = "README.md"
 license = "MIT"
 
