@@ -20,7 +20,7 @@ jobs:
     - name: Install dependencies
       run: poetry install
     - name: Lint with flake8
-      run: flake8 . --count --show-source --statistics --max-line-length=88 --extend-ignore=E203
+      run: poetry run flake8 . --count --show-source --statistics --max-line-length=88 --extend-ignore=E203
     - name: Format with black and isort
       run: |
         poetry run black . --check
