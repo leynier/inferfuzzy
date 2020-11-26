@@ -8,4 +8,4 @@ tests: install
 	poetry run pytest
 
 publish: tests
-	poetry run poetry publish --build -u=${u} -p=${p}
+	poetry run poetry publish --build -u="${u}" -p="${p}"
