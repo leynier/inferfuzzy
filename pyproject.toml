@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "inferfuzzy"
-version = "0.1.3"
+version = "0.1.4"
 description = "Fuzzy Inference System in Python"
 authors = ["leynier <leynier41@gmail.com>"]
 homepage = "https://github.com/leynier/inferfuzzy"
